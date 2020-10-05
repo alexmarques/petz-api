@@ -3,6 +3,7 @@ package br.com.petzapi.controllers;
 import br.com.petzapi.converter.ClienteConverter;
 import br.com.petzapi.converter.PetConverter;
 import br.com.petzapi.models.Cliente;
+import br.com.petzapi.request.ClienteCreate;
 import br.com.petzapi.response.ClienteResponse;
 import br.com.petzapi.response.PetResponse;
 import br.com.petzapi.services.ClienteService;
@@ -22,7 +23,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente cadastrar(@RequestBody Cliente cliente) {
+    public Cliente cadastrar(@RequestBody ClienteCreate cliente) {
         return this.service.save(cliente);
     }
 

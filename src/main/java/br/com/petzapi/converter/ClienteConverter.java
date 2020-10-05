@@ -1,6 +1,8 @@
 package br.com.petzapi.converter;
 
 import br.com.petzapi.models.Cliente;
+import br.com.petzapi.models.Pet;
+import br.com.petzapi.request.ClienteCreate;
 import br.com.petzapi.response.ClienteResponse;
 import br.com.petzapi.response.PetResponse;
 
@@ -18,5 +20,18 @@ public class ClienteConverter {
                 .collect(Collectors.toList());
         response.setPets(pets);
         return response;
+    }
+
+    public static Cliente convert(ClienteCreate clienteCreate) {
+        Cliente cliente = new Cliente();
+        cliente.setName(clienteCreate.getName());
+        if(clienteCreate.getPets() != null && !clienteCreate.getPets().isEmpty()) {
+            List<Pet> pets = clienteCreate.getPets()
+                    .stream()
+                    .map(PetConverter::convert)
+                    .collect(Collectors.toList());
+            cliente.setPets(pets);
+        }
+        return cliente;
     }
 }

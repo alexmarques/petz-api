@@ -1,7 +1,8 @@
-package br.com.petzapi.services;
+package br.com.petzapi.services.impl;
 
 import br.com.petzapi.models.Pet;
 import br.com.petzapi.repository.PetRepository;
+import br.com.petzapi.services.PetService;
 import org.springframework.stereotype.Service;
 
 @Service

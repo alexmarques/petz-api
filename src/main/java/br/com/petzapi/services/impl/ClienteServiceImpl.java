@@ -1,10 +1,13 @@
-package br.com.petzapi.services;
+package br.com.petzapi.services.impl;
 
+import br.com.petzapi.converter.ClienteConverter;
 import br.com.petzapi.exceptions.ClienteNotFoundException;
 import br.com.petzapi.models.Cliente;
 import br.com.petzapi.models.Pet;
 import br.com.petzapi.repository.ClienteRepository;
 import br.com.petzapi.repository.PetRepository;
+import br.com.petzapi.request.ClienteCreate;
+import br.com.petzapi.services.ClienteService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +24,8 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente save(Cliente cliente) {
+    public Cliente save(ClienteCreate clienteCreate) {
+        Cliente cliente = ClienteConverter.convert(clienteCreate);
         return this.repository.save(cliente);
     }
 
